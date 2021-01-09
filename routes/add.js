@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', async (req, res) => {
-    const course = new Course({...req.body});
+    const course = new Course({...req.body, userId: req.user._id});
     
     try {
         await course.save();

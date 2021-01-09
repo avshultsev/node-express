@@ -1,32 +1,35 @@
 <h1>Your cart</h1>
 
 {{#if courses.length}}
-  <div id='cart'>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Quantity</th>
-          <th>Abilities</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each courses}}
-        <tr>
-          <td>{{course.title}}</td>
-          <td>{{quantity}}</td>
-          <td>
-            <button class="btn btn-small deleteButton" data-id="{{course.id}}">
-              Delete
-            </button>
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+<div id='cart'>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Abilities</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each courses}}
+      <tr>
+        <td>{{course.title}}</td>
+        <td>{{quantity}}</td>
+        <td>
+          <button class="btn btn-small deleteButton" data-id="{{course.id}}">
+            Delete
+          </button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-    <p><strong>Price: </strong><span class='price'>{{totalPrice}}</span></p>
-  </div>
+  <p><strong>Price: </strong><span class='price'>{{totalPrice}}</span></p>
+  <form action="/orders" method="post">
+    <button type="submit" class='btn'>Make an order</button>
+  </form>
+</div>
 {{else}}
-  <p>Cart is empty.</p>
+<p>Cart is empty.</p>
 {{/if}}

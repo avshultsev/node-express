@@ -38,6 +38,15 @@ router.post('/edit', async (req, res) => { // save edition of a specific course
   delete req.body.id;
   await Course.findByIdAndUpdate(id, req.body);
   res.redirect('/courses');
-})
+});
+
+router.post('/remove', async (req, res) => {
+  try {
+    await Course.deleteOne({ _id: req.body.id });
+    res.redirect('/courses');
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 module.exports = router;
