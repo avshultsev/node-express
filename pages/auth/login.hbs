@@ -1,0 +1,68 @@
+<div class="auth">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s6"><a class="active" href="#signin">Sign in</a></li>
+                <li class="tab col s6"><a href="#register">Register</a></li>
+            </ul>
+        </div>
+        <div id="signin" class="col s6 offset-s3">
+            {{#if signInError}}
+                <p class="alert">{{signInError}}</p>
+            {{/if}}
+            <h2>Sign in</h2>
+            <form action="/login/signin" method="post">
+                <div class="input-field">
+                    <input id="email" name='email' type="email" required class="validate">
+                    <label for="email">Email</label>
+                    <span class="helper-text" data-error="Invalid email"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="password" name='password' type="password" required class="validate">
+                    <label for="password">Password</label>
+                    <span class="helper-text" data-error="Password field can't be empty"></span>
+                </div>
+
+                <input type="hidden" name="_csrf" value={{csurf}}>
+
+                <button class='btn btn-primary' type="submit">Sign In</button>
+            </form>
+        </div>
+        <div id="register" class="col s6 offset-s3">
+            {{#if registerError}}
+                <p class="alert">{{registerError}}</p>
+            {{/if}}
+            <h2>Create an account</h2>
+            <form action="/login/register" method="post">
+                <div class="input-field">
+                    <input id="name" name='name' type="text" required class="validate">
+                    <label for="name">Name</label>
+                    <span class="helper-text" data-error="Enter your name"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="remail" name='remail' type="email" required class="validate">
+                    <label for="remail">Email</label>
+                    <span class="helper-text" data-error="Invalid email"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="rpassword" name='rpassword' type="password" required class="validate">
+                    <label for="rpassword">Password</label>
+                    <span class="helper-text" data-error="Password field can't be empty"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="confirm" name='confirm' type="password" required class="validate">
+                    <label for="confirm">Password check-up</label>
+                    <span class="helper-text" data-error="Not the same value as password field"></span>
+                </div>
+
+                <input type="hidden" name="_csrf" value={{csurf}}>
+                
+                <button class='btn btn-primary' type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

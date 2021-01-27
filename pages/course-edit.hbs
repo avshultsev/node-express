@@ -19,10 +19,11 @@
         <span class="helper-text" data-error="Incorrect URL"></span>
     </div>
     <input type="hidden" name="id" value="{{course.id}}">
-
+    <input type="hidden" name="_csrf" value={{csurf}}>
     <button class='btn btn-primary' type="submit">Save changes</button>
 </form>
 <form action="/courses/remove" method="post">
     <input type="hidden" name="id" value='{{course.id}}'>
+    <input type="hidden" name="_csrf" value={{csurf}}>
     <button class='btn red' type="submit">Delete</button>
 </form>

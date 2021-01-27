@@ -16,7 +16,7 @@
         <td>{{course.title}}</td>
         <td>{{quantity}}</td>
         <td>
-          <button class="btn btn-small deleteButton" data-id="{{course.id}}">
+          <button class="btn btn-small deleteButton" data-csurf={{@root.csurf}} data-id="{{course.id}}">
             Delete
           </button>
         </td>
@@ -27,6 +27,7 @@
 
   <p><strong>Price: </strong><span class='price'>{{totalPrice}}</span></p>
   <form action="/orders" method="post">
+    <input type="hidden" name="_csrf" value={{csurf}}>
     <button type="submit" class='btn'>Make an order</button>
   </form>
 </div>

@@ -30,9 +30,13 @@ if ($cart) {
   $cart.addEventListener('click', e => {
     if (e.target.classList.contains('deleteButton')) {
       const id = e.target.dataset.id;
+      const csurf = e.target.dataset.csurf;
 
       fetch(`/cart/remove/${id}`, {
-          method: 'delete'
+          method: 'delete',
+          headers: {
+            'X-XSRF-TOKEN': csurf
+          }
         })
         .then(res => res.json())
         .then(cart => {
@@ -43,7 +47,7 @@ if ($cart) {
                   <td>${obj.course.title}</td>
                   <td>${obj.quantity}</td>
                   <td>
-                    <button class="btn btn-small deleteButton" data-id="${obj.course.id}">
+                    <button class="btn btn-small deleteButton" data-csurf="${csurf}" data-id="${obj.course.id}">
                       Delete
                     </button>
                   </td>
@@ -59,3 +63,5 @@ if ($cart) {
     }
   });
 }
+
+M.Tabs.init(document.querySelector('.tabs'));

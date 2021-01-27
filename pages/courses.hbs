@@ -14,9 +14,12 @@
           </div>
           <div class="card-action actions">
             <a href="/courses/{{id}}">Open course</a>
+            {{#if @root.isAuth}}
             <a href="/courses/{{id}}/edit?allow=true">Edit</a>
+            {{/if}}
             <form action="/cart/add" method="post">
               <input type="hidden" name="id" id="id" value="{{id}}">
+              <input type="hidden" name="_csrf" value={{@root.csurf}}>
               <button class="btn btn-primary" type="submit">Buy</button>
             </form>
           </div>
